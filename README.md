@@ -2,15 +2,11 @@
 
 This is the repository for 2021's challenge.
 
-## Installation
+## Getting Started
 
-Run
-```bash
-git clone https://github.com/ExplodingBricks/CargoConnect21
-cd CargoConnect21
-``` 
-Next, install all recommended extensions in VSCode.
+Click "Use This Template." Then clone the repository and modify.
 
+`helpers/constants.py` is a variable file. Modify it to match your robot.
 ## Usage
 
 Send it to your EV3 and run.
