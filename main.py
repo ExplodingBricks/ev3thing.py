@@ -16,7 +16,7 @@ import time, sys
 
 sys.path.append(sys.path[0] + "/")
 from helpers import ColorSensorHelper, constants
-from runs import Run #Import your runs here
+from runs import Run  # Import your runs here
 
 fileName = "/home/robot/REPO_NAME/CalibrationData.txt"
 
