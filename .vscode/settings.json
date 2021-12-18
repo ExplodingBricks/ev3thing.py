@@ -1,0 +1,10 @@
+// Place your settings in this file to overwrite default and user settings.
+{
+  "files.eol": "\n",
+  "debug.openDebug": "neverOpen",
+  "files.autoSave": "afterDelay",
+  "ev3devBrowser.download.include": "**/*.py",
+  "ev3devBrowser.download.exclude": "examples/*.py",
+  "python.formatting.provider": "black",
+
+}

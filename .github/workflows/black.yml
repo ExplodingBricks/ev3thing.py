@@ -1,0 +1,24 @@
+name: Lint Code
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python 3.7
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.7
+      - name: Install Black
+        run: pip install black
+      - name: Run black --check .
+        run: black --check .
+      - name: Commit Changes
+        if: failure()
+        run: |
+          black .
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add .
+          git commit -m ":heavy_check_mark: Ugly code -> Nice Code (© 2020 Graham)"
+          git push

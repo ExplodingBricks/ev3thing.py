@@ -1,0 +1,14 @@
+loaders:
+  - type: python
+    search_path: [helpers]
+processors:
+  - type: filter
+  - type: smart
+  - type: crossref
+renderer:
+  type: markdown
+  filename: 'docs/methods.md'
+  source_linker:
+      type: github
+      repo: ExplodingBricks/ev3thing.py
+  source_format: "[`View source`]({url})"

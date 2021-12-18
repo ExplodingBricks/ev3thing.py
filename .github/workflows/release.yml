@@ -1,0 +1,36 @@
+name: Releaser
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version'     
+        required: true
+        default: 'v'
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python 3.7
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.7
+      - name: Create release branch
+        run: git checkout -b release/v${{ github.event.inputs.version }}
+      - run: |
+            rm -r ./tests
+            git config user.name "Github Actions"
+            git config user.email noreply@github.com 
+            git add .
+            git commit -m "Release"
+            git push --set-upstream origin release/v${{ github.event.inputs.version }}
+            zip -r release.zip .
+      - uses: "marvinpinto/action-automatic-releases@latest"
+        with:
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          automatic_release_tag: v${{ github.event.inputs.version }}
+          prerelease: false
+          title: "Release v${{ github.event.inputs.version }}"
+          files: |
+            release.zip
+
